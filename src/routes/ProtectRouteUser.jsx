@@ -17,7 +17,7 @@ const ProtectRouteUser = ({ element }) => {
                 .catch((err) => setOk(false))
         }
     }, [])
-
+console.log(user)
     return ok ? element : <LoadingToRedirect />
 
 }
