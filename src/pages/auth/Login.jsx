@@ -49,13 +49,14 @@ const Login = () => {
     }
   }
 
-  const roleRedirect = (role) => {
-    if (role === 'admin') {
-      navigate('/admin')
-    } else {
-      navigate(-1)
-    }
-  }
+  // const roleRedirect = (role) => {
+  //   if (role === 'admin') {
+  //     navigate('/admin')
+  //   } else {
+  //     navigate(-1)
+  //   }
+  // }
+  console.log(user)
 
   return (
     <div className="min-h-screen flex justify-center items-center shadow-md 
