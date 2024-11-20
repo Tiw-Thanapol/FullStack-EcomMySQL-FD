@@ -27,11 +27,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    //   // Validation
-    //   if (!form.email || !form.password) {
-    //     toast.error('Please fill in all fields')
-    //     return
-    //   }
+      // Validation
+      if (!form.email || !form.password) {
+        toast.error('Please fill in all fields')
+        return
+      }
 
     try {
       const res = await actionLogin(form)
