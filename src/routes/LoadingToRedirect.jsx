@@ -14,7 +14,7 @@ const LoadingToRedirect = () => {
         }
         return currentCount - 1
       })
-    }, 1000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [])
