@@ -6,15 +6,16 @@ import { useNavigate } from 'react-router-dom'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Login = () => {
-  const navigate = useNavigate()
-  const actionLogin = useEcomStore((state) => state.actionLogin)
-  const user = useEcomStore((state) => state.user)
-  const [showPassword, setShowPassword] = useState(false)
-  
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
-  })
+
+  // const navigate = useNavigate()
+  // const actionLogin = useEcomStore((state) => state.actionLogin)
+  // const user = useEcomStore((state) => state.user)
+  // const [showPassword, setShowPassword] = useState(false)
+
+  // const [form, setForm] = useState({
+  //   email: "",
+  //   password: "",
+  // })
 
   const handleOnChange = (e) => {
     setForm({
@@ -25,37 +26,33 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    // Validation
-    if (!form.email || !form.password) {
-      toast.error('Please fill in all fields')
-      return
-    }
-    
+
+    //   // Validation
+    //   if (!form.email || !form.password) {
+    //     toast.error('Please fill in all fields')
+    //     return
+    //   }
+
     try {
       const res = await actionLogin(form)
-      if (res?.data?.payload) {
-        const role = res.data.payload.role
-        console.log('role', role)
-        roleRedirect(role)
-        toast.success('Welcome Back')
-      } else {
-        throw new Error('Invalid response from server')
-      }
+      const role = res.data.payload.role
+      console.log('role', role)
+      roleRedirect(role)
+      toast.success('Welcome Back')
     } catch (err) {
       console.log(err)
-      const errMsg = err.response?.data?.message || 'Login failed'
+      const errMsg = err.response?.data?.message
       toast.error(errMsg)
     }
   }
 
-  // const roleRedirect = (role) => {
-  //   if (role === 'admin') {
-  //     navigate('/admin')
-  //   } else {
-  //     navigate(-1)
-  //   }
-  // }
+  const roleRedirect = (role) => {
+    if (role === 'admin') {
+      navigate('/admin')
+    } else {
+      navigate(-1)
+    }
+  }
   console.log(user)
 
   return (
@@ -67,23 +64,23 @@ const Login = () => {
           <h2 className="text-2xl font-bold text-center text-blue-600 mb-4">
             Sign in
           </h2>
-          
+
           <form onSubmit={handleSubmit}>
-            <input 
+            <input
               type="email"
-              name="email" 
-              value={form.email} 
+              name="email"
+              value={form.email}
               className="w-full border border-gray-300 rounded-full px-4 py-2 
               focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="E-mail"
               onChange={handleOnChange}
             />
-            
+
             <div className="relative">
-              <input 
+              <input
                 type={showPassword ? 'text' : 'password'}
                 name="password" // Added name attribute
-                value={form.password} 
+                value={form.password}
                 className="w-full border border-gray-300 rounded-full px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                 placeholder="Enter your password"
@@ -97,9 +94,9 @@ const Login = () => {
                 {showPassword ? <AiFillEyeInvisible size={24} /> : <AiFillEye size={24} />}
               </button>
             </div>
-            
+
             <button
-              type="submit" 
+              type="submit"
               className="w-full bg-blue-500 text-white py-2 
               rounded-full hover:bg-sky-800 transition duration-300
               bg-gradient-to-r from-sky-400 to-sky-700 hover:scale-105"
