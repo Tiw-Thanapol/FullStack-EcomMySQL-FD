@@ -7,15 +7,15 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Login = () => {
 
-  // const navigate = useNavigate()
-  // const actionLogin = useEcomStore((state) => state.actionLogin)
-  // const user = useEcomStore((state) => state.user)
-  // const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate()
+  const actionLogin = useEcomStore((state) => state.actionLogin)
+  const user = useEcomStore((state) => state.user)
+  const [showPassword, setShowPassword] = useState(false)
 
-  // const [form, setForm] = useState({
-  //   email: "",
-  //   password: "",
-  // })
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  })
 
   const handleOnChange = (e) => {
     setForm({
